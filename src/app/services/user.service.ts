@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ILoginResponse } from '../interfaces/i-login-response';
 import { IRegisterResponse } from '../interfaces/i-register-response';
+import { IScoreResponse } from '../interfaces/i-score-respons';
+import { IHintResponse } from '../interfaces/i-hint-response';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +32,32 @@ export class UserService {
       confirmpassword: confirmpassword
     }
     return this.http.post<IRegisterResponse>(url, body);
+  }
+
+  getScore(): Observable<IScoreResponse> {
+    let url = 'http://localhost:8080/user/getscore';
+    return this.http.get<IScoreResponse>(url);
+  }
+
+  setScore(score: number): Observable<IScoreResponse> {
+    let url = 'http://localhost:8080/user/postscore';
+    let body = {
+      score: score
+    }
+    return this.http.post<IScoreResponse>(url, body);
+  }
+
+  getHint(): Observable<IHintResponse>{ 
+    let url = 'http://localhost:8080/user/showhint';
+    return this.http.get<IHintResponse>(url);
+  }
+
+  buyHint(score: number): Observable<any>{
+    let url = 'http://localhost:8080/user/buyhint';
+    let body = {
+      score: score
+    }
+    return this.http.post(url, body);
   }
 
 }

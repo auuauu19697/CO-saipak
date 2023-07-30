@@ -33,7 +33,6 @@ export class RegisterComponent {
       next: (response) => {
         if(response.success == true) {
           alert("Success")
-          this.router.navigate(['/login']);
         }
       },
       error: (error) => {
