@@ -51,6 +51,7 @@ export class MainComponent implements OnInit{
         // Check if there was a significant change in acceleration
         if (deltaX > this.shakeThreshold || deltaY > this.shakeThreshold || deltaZ > this.shakeThreshold) {
           ++this.score;
+          this.setMessage("GOOD LUCK!")
           this.setNumber(this.score)
         }
 
