@@ -51,8 +51,7 @@ export class MainComponent implements OnInit{
         // Check if there was a significant change in acceleration
         if (deltaX > this.shakeThreshold || deltaY > this.shakeThreshold || deltaZ > this.shakeThreshold) {
           ++this.score;
-          // Shake detected! Do something here...
-          console.log('Shake:', this.score);
+          this.setNumber(this.score)
         }
 
         // Update last acceleration values
