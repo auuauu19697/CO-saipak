@@ -14,7 +14,6 @@ export class MainComponent implements OnInit{
   errorText: String = "GOOD LUCK!";
   numberString: String = '0000'
   private shakeThreshold = 30;
-  private shaked = 0;
   private lastX = 0;
   private lastY = 0;
   private lastZ = 0;
@@ -34,6 +33,36 @@ export class MainComponent implements OnInit{
         console.log(error)
       }
     })
+    if (window.DeviceMotionEvent) {
+      // Event listener for device motion
+      window.addEventListener('devicemotion', (event) => {
+        // Get accelerometer values
+        const acceleration = event.accelerationIncludingGravity;
+
+        // Calculate change in acceleration
+        if(acceleration==null) return;
+        if(acceleration.x==null) return;
+        if(acceleration.y==null) return;
+        if(acceleration.z==null) return;
+        const deltaX = Math.abs(this.lastX - acceleration.x);
+        const deltaY = Math.abs(this.lastY - acceleration.y);
+        const deltaZ = Math.abs(this.lastZ - acceleration.z);
+
+        // Check if there was a significant change in acceleration
+        if (deltaX > this.shakeThreshold || deltaY > this.shakeThreshold || deltaZ > this.shakeThreshold) {
+          ++this.score;
+          // Shake detected! Do something here...
+          console.log('Shake:', this.score);
+        }
+
+        // Update last acceleration values
+        this.lastX = acceleration.x;
+        this.lastY = acceleration.y;
+        this.lastZ = acceleration.z;
+      });
+    } else {
+      console.log('Device motion not supported.');
+    }
   }
 
   gameElements = {
@@ -59,11 +88,11 @@ export class MainComponent implements OnInit{
     this.setNumber(this.score)
   
   }
-  // requestPermission() {
-  //   let requestButton = document.getElementById("startGame");
-  //   if(requestButton) requestButton.style.display = "none";
-  //   //DeviceOrientationEvent.requestPermission();
-  // }
+  requestPermission() {
+    let requestButton = document.getElementById("startGame");
+    if(requestButton) requestButton.style.display = "none";
+    (DeviceOrientationEvent as any).requestPermission()
+  }
   
   saveClick(): void{
     this.userService.setScore(this.score).subscribe({
