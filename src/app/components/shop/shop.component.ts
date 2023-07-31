@@ -60,6 +60,8 @@ export class ShopComponent implements OnInit{
           this.buttonText = 'Nothing'
           this.isDisabled = true;
         }
+        console.log(this.score)
+        console.log(this.hintPrice)
         if(this.score < this.hintPrice) {
           this.buttonText = "not enough pt."
           this.isDisabled = true;
