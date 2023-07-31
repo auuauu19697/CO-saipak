@@ -7,7 +7,6 @@
 </head>
 <body>
 
-<div id="cardHolder">
   <div class="card-container">
     <div class="card-stack" *ngIf="hint1Status">
       <div class="card-item front" #refEl1 (click)="onFrontCardClick(refEl1)"></div>
@@ -29,7 +28,7 @@
       <div class="card-item front" #refEl5 (click)="onFrontCardClick(refEl5)"></div>
       <div class="card-item back" #refEl5 (click)="onBackCardClick(refEl5)">{{hint5}}</div>
     </div>
+    
   </div>
-</div>
-<button id="addCardBtn" (click)="buyHint()">Buy Hint</button>
+  <button id="addCardBtn" (click)="buyHint()" [disabled]=isDisabled>{{buttonText}}</button>
 </body>

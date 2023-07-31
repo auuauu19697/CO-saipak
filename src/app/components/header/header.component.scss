@@ -1,16 +1,11 @@
-body {
-    margin: 0;
-    
-    background-color: #000; /* Black background to give a retro feel */
-    color: #fff; /* White text color */
-  }
-  
+
   nav {
     background-color: #333;
     font-family: 'Handjet', cursive; /* Use a pixel-style font */
     font-size: 1.75em;
     padding: 10px;
     display: flex;
+    width: 100%;
     justify-content: space-between; /* To align items on the left and right */
   }
   

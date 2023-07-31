@@ -20,16 +20,17 @@ export class ShopComponent implements OnInit{
   hint3Status: boolean = false;
   hint4Status: boolean = false;
   hint5Status: boolean = false;
-  hintPrice: number = 1000;
+  isDisabled: boolean = false
+  hintPrice: number = 9999;
   score: number = 0;
-  renderer: any;
+  buttonText: String = 'Buy: '+ this.hintPrice+ ' pts. ' 
+
   constructor(
     private userService: UserService,
-    private router: Router,
-    private elRef: ElementRef<HTMLElement>
   ) {}
 
   ngOnInit(): void {
+    
     this.userService.getHint().subscribe({
       next: (response) => {
         this.score = response.score
@@ -40,22 +41,28 @@ export class ShopComponent implements OnInit{
         this.hint5 = response.hint5
         if(this.hint1 != null) {
           this.hint1Status=true;
-          this.hintPrice=1500;
+          this.buttonText = 'Buy Hint : '+ this.hintPrice+ ' point ' 
         }
         if(this.hint2 != null) {
           this.hint2Status=true;
-          this.hintPrice=2000;
+          this.buttonText = 'Buy Hint : '+ this.hintPrice+ ' point ' 
         }
         if(this.hint3 != null) {
           this.hint3Status=true;
-          this.hintPrice=2500;
+          this.buttonText = 'Buy Hint : '+ this.hintPrice+ ' point ' 
         }
         if(this.hint4 != null) {
           this.hint4Status=true;
-          this.hintPrice=3000;
+          this.buttonText = 'Buy Hint : '+ this.hintPrice+ ' point ' 
         }
         if(this.hint5 != null) {
           this.hint5Status=true;
+          this.buttonText = 'Nothing'
+          this.isDisabled = true;
+        }
+        if(this.score < this.hintPrice) {
+          this.buttonText = "not enough pt."
+          this.isDisabled = true;
         }
       },
       error: (error) => {
@@ -65,11 +72,6 @@ export class ShopComponent implements OnInit{
   }
 
   buyHint(): void{
-    let error = document.getElementById("error");
-    if(this.score<this.hintPrice) {
-      error!.innerText = "You don't have enough point"
-      return ;
-    }
     this.score-=this.hintPrice
     this.userService.buyHint(this.score).subscribe({
       complete: () => {

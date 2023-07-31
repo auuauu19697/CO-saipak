@@ -98,12 +98,12 @@ export class MainComponent implements OnInit{
     this.userService.setScore(this.score).subscribe({
       error: (error) => {
         console.log(error)
-        this.errorText = "Save Fail"
+        this.errorText = "Failed"
       },
       complete: () => {
         this.clickCounter=0;
         this.appCookieService.setScore(this.score);
-        this.errorText = "Save Success"
+        this.errorText = "Saved"
       }
     })
   }
