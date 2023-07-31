@@ -16,7 +16,7 @@ export class UserService {
   ) { }
 
   login(username: string, password: string): Observable<ILoginResponse> {
-    let url = 'http://localhost:8080/user/login';
+    let url = 'https://egcomu.com/user/login';
     let body = {
       username: username,
       password: password
@@ -25,7 +25,7 @@ export class UserService {
   }
 
   register(username: string, password: string, confirmpassword: string): Observable<IRegisterResponse> {
-    let url = 'http://localhost:8080/user/register';
+    let url = 'https://egcomu.com/user/register';
     let body = {
       username: username,
       password: password,
@@ -35,12 +35,12 @@ export class UserService {
   }
 
   getScore(): Observable<IScoreResponse> {
-    let url = 'http://localhost:8080/user/getscore';
+    let url = 'https://egcomu.com/user/getscore';
     return this.http.get<IScoreResponse>(url);
   }
 
   setScore(score: number): Observable<IScoreResponse> {
-    let url = 'http://localhost:8080/user/postscore';
+    let url = 'https://egcomu.com/user/postscore';
     let body = {
       score: score
     }
@@ -48,12 +48,12 @@ export class UserService {
   }
 
   getHint(): Observable<IHintResponse>{ 
-    let url = 'http://localhost:8080/user/showhint';
+    let url = 'https://egcomu.com/user/showhint';
     return this.http.get<IHintResponse>(url);
   }
 
   buyHint(score: number): Observable<any>{
-    let url = 'http://localhost:8080/user/buyhint';
+    let url = 'https://egcomu.com/user/buyhint';
     let body = {
       score: score
     }
