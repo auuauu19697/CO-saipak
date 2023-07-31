@@ -97,7 +97,7 @@ public class UserService {
 
         User user = optUser.get();
         HintResponse response = new HintResponse();
-
+        response.setScore(user.getScore());
         if(user.getHint_bought()==0) {
 
         }

@@ -1,5 +1,7 @@
 export interface IHintResponse {
     
+    score: number;
+
     hint1: string;
 
     hint2: string;

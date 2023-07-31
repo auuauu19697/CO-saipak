@@ -5,6 +5,8 @@ import lombok.Data;
 @Data
 public class HintResponse {
 
+    private int score;
+
     private String hint1 = null;
 
     private String hint2 = null;

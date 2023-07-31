@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    
+    background-color: #000; /* Black background to give a retro feel */
+    color: #fff; /* White text color */
+  }
+  
+  nav {
+    background-color: #333;
+    font-family: 'Handjet', cursive; /* Use a pixel-style font */
+    font-size: 1.75em;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between; /* To align items on the left and right */
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #fff; /* White text color for links */
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #222; /* Dark gray background for links */
+    box-shadow: 2px 2px 0 #000; /* Add a pixel-like shadow effect */
+  }
+  
+  a:hover {
+    background-color: #444; /* Lighter gray background on hover */
+  }
+  
+  .action-button {
+    background-color: #8a0011; /* Red button color */
+    color: #fff; /* White text color for the button */
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 #000; /* Add a pixel-like shadow effect */
+  }
+  

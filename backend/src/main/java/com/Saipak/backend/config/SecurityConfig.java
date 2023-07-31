@@ -49,8 +49,8 @@ public class SecurityConfig {
                     config.configurationSource(source);
                 })
                 .authorizeHttpRequests(authz -> authz
-                .requestMatchers("/user/login").anonymous()
-                                .requestMatchers("/user/register").hasAuthority("Roles(name=ADMIN)")
+                .requestMatchers("/user/login","/user/register").anonymous()
+//                                .requestMatchers("/user/register").hasAuthority("Roles(name=ADMIN)")
                                 .anyRequest().authenticated()
                 )
                 .csrf(csrf -> csrf.disable())

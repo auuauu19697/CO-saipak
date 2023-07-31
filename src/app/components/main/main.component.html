@@ -1,7 +1,21 @@
 <app-header></app-header>
-<div class="container h-100 d-flex justify-content-center">
-    <div class="mx-auto my-auto d-flex justify-content-center flex-column">
-        <h1 class="display-3 text-center">{{score}}</h1>
-        <button type="button" class="btn btn-primary btn-lg" (click)="clickCount()">Click Me</button>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@300&display=swap" rel="stylesheet">
+</head>
+<div class="game">
+  <div class="game__content">
+    <div class="game__message">{{errorText}}</div>
+    <div class="game__machine">
+      <div class="game__numbers">
+        <div class="game__number" id="gameNumber1">{{numberString[0]}}</div>
+        <div class="game__number" id="gameNumber2">{{numberString[1]}}</div>
+        <div class="game__number" id="gameNumber3">{{numberString[2]}}</div>
+        <div class="game__number" id="gameNumber4">{{numberString[3]}}</div>
+      </div>
     </div>
- </div>
+    <div class="game__controls">
+      <button class="game__button" id="startGame" (click)="clickCount()">START</button>
+      <button class="game__button" id="save" (click)="saveClick()">Save</button>
+    </div>
+  </div>
+</div>

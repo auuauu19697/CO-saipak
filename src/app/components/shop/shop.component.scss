@@ -1,0 +1,120 @@
+html {
+  background: #333;
+  font-size: 10px;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  margin-top: 40px;
+}
+
+/* Remove flex property from .card-container to prevent wrapping */
+.card-container {
+  margin: 10px; /* Added margin to create space between cards */
+  perspective: 1000px;
+  transform-origin: 50% 50%;
+  position: relative;
+}
+
+.card-stack {
+  position: relative;
+  width: 357.5357535754px;
+  height: 500px;
+  margin: 100px auto;
+  transform-style: preserve-3d;
+  transition: all 500ms ease-out;
+  transform-origin: 50% 50%;
+}
+
+.card-stack.normal {
+  animation: flipCardBack ease-out 500ms forwards;
+}
+
+.card-stack.flipped {
+  animation: flipCard ease-out 500ms forwards;
+}
+
+.card-item {
+  width: 357.5357535754px;
+  height: 500px;
+  padding: 15px 15px 20px;
+  backface-visibility: hidden;
+  border-radius: 25px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Add a box shadow for visual effect */
+}
+
+.card-item.front {
+  background: #fff
+    url(https://cdn.discordapp.com/attachments/1110981241618038857/1135491053475090542/backjpg.jpg)
+    no-repeat center;
+  background-size: contain;
+}
+
+.card-item.back {
+  background: #fff url(https://imgfave-herokuapp-com.global.ssl.fastly.net/image_cache/1277044147918955.jpeg) no-repeat center;
+  background-size: contain;
+  transform: rotateY(180deg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 'Handjet', cursive;
+  font-size: 25px;
+  max-width: 100%; /* Adjust this value to control when the text wraps */
+  word-wrap: break-word; /* This property ensures that the text wraps when it exceeds the container width */
+}
+
+#addCardBtn {
+  width: 50%;
+  height: 8%;
+  position: fixed;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  padding: 10px;
+  background-color: #8a0011;
+  border: 1px solid #333;
+  border-radius: 5px;
+  font-family: 'Handjet',cursive;
+  font-size: 2rem;
+  color: black;
+}
+
+@keyframes flipCard {
+  0% {
+    transform: translate3d(0, 0, 0) rotateY(0);
+  }
+  33% {
+    transform: translate3d(0, 0, -200px) rotateY(0);
+  }
+  66% {
+    transform: translate3d(0, 0, -200px) rotateY(180deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotateY(180deg);
+  }
+}
+@keyframes flipCardBack {
+  0% {
+    transform: translate3d(0, 0, 0) rotateY(180deg);
+  }
+  33% {
+    transform: translate3d(0, 0, -200px) rotateY(180deg);
+  }
+  66% {
+    transform: translate3d(0, 0, -200px) rotateY(0deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotateY(0);
+  }
+}

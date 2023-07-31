@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="">EGCO</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,4 +15,15 @@
         </ul>
       </div>
     </div>
+</nav> -->
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@300&display=swap" rel="stylesheet">
+</head>
+<nav>
+  <ul>
+    <li><a href="">SHAKE !</a></li>
+    <li><a [routerLink]="['/shop']">Hint</a></li>
+  </ul>
+  <button class="action-button" (click)="logout()">logout</button>
 </nav>
+

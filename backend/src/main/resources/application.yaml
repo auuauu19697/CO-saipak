@@ -3,9 +3,9 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/CO-Saipak
-    username: postgres
-    password: syspass
+    url: jdbc:postgresql://ep-dry-silence-88056814-pooler.ap-southeast-1.aws.neon.tech/neondb?user=hamjiruschai&password=AQcmdHCwt4u2
+    username: hamjiruschai
+    password: AQcmdHCwt4u2
 ---
 app:
   token:

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppCookieService } from 'src/app/services/app-cookie.service';
 import { UserService } from 'src/app/services/user.service';
@@ -22,22 +22,17 @@ export class ShopComponent implements OnInit{
   hint5Status: boolean = false;
   hintPrice: number = 1000;
   score: number = 0;
+  renderer: any;
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private elRef: ElementRef<HTMLElement>
   ) {}
 
   ngOnInit(): void {
-    this.userService.getScore().subscribe({
-      next: (response) => {
-        this.score = response.score;
-      },
-      error: (error) => {
-        console.log(error)
-      }
-    })
     this.userService.getHint().subscribe({
       next: (response) => {
+        this.score = response.score
         this.hint1 = response.hint1
         this.hint2 = response.hint2
         this.hint3 = response.hint3
@@ -83,5 +78,28 @@ export class ShopComponent implements OnInit{
       }
     })
   }
+
+  onFrontCardClick(cardItem: HTMLElement) {
+    console.log(cardItem)
+    const cardStack = cardItem.parentElement;
+    console.log(cardStack)
+    if(cardStack==null) return; 
+    if (!cardStack.classList.contains('flipped')) {
+      cardStack.classList.remove('normal')
+      cardStack.classList.add('flipped')
+    }
+  }
+
+  onBackCardClick(cardItem: HTMLElement) {
+    
+    const cardStack = cardItem.parentElement;
+    if(cardStack==null) return; 
+    if (cardStack.classList.contains('flipped')) {
+      cardStack.classList.remove('flipped')
+      cardStack.classList.add('normal')
+    }
+  }
+
+
   
 }

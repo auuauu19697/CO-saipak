@@ -1,48 +1,35 @@
 <app-header></app-header>
-<h5>Your Point: {{score}}</h5>
-<div class="d-flex flex-row">
-    <div class="card" style="width: 400px;">
-      <img src="https://static.vecteezy.com/system/resources/thumbnails/006/662/128/small/quick-tips-speech-bubble-with-bulb-icon-interesting-facts-concept-for-graphic-design-logo-website-social-media-mobile-app-ui-illustration-free-vector.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Buy Hint</h5>
-        <h6 class="card-title">Price: {{hintPrice}}</h6>
-        <a class="btn btn-primary" (click)="buyHint()">Purchase</a>
-        <p id="error"></p>
-      </div>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Handjet:wght@300&display=swap');
+  </style>
+</head>
+<body>
+
+<div id="cardHolder">
+  <div class="card-container">
+    <div class="card-stack" *ngIf="hint1Status">
+      <div class="card-item front" #refEl1 (click)="onFrontCardClick(refEl1)"></div>
+      <div class="card-item back" #refEl1 (click)="onBackCardClick(refEl1)">{{hint1}}</div>
     </div>
-    <div class="card" style="width: 400px;" *ngIf="hint1Status">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8QJmJQLtIDr4XBcAP_mb4qNmjjECz3nkNRu0l5ssp&s" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Hint 1</h5>
-        <p class="card-text">{{hint1}}</p>
-      </div>
+    <div class="card-stack" *ngIf="hint2Status">
+      <div class="card-item front" #refEl2 (click)="onFrontCardClick(refEl2) "></div>
+      <div class="card-item back" #refEl2 (click)="onBackCardClick(refEl2)">{{hint2}}</div>
     </div>
-    <div class="card" style="width: 400px;" *ngIf="hint2Status">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8QJmJQLtIDr4XBcAP_mb4qNmjjECz3nkNRu0l5ssp&s" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Hint 2</h5>
-        <p class="card-text">{{hint2}}</p>
-      </div>
+    <div class="card-stack" *ngIf="hint3Status">
+      <div class="card-item front" #refEl3 (click)="onFrontCardClick(refEl3)"></div>
+      <div class="card-item back" #refEl3 (click)="onBackCardClick(refEl3)">{{hint3}}</div>
     </div>
-    <div class="card" style="width: 400px;" *ngIf="hint3Status">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8QJmJQLtIDr4XBcAP_mb4qNmjjECz3nkNRu0l5ssp&s" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Hint 3</h5>
-        <p class="card-text">{{hint3}}</p>
-      </div>
+    <div class="card-stack" *ngIf="hint4Status">
+      <div class="card-item front" #refEl4 (click)="onFrontCardClick(refEl4)"></div>
+      <div class="card-item back" #refEl4 (click)="onBackCardClick(refEl4)">{{hint4}}</div>
     </div>
-    <div class="card" style="width: 400px;" *ngIf="hint4Status">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8QJmJQLtIDr4XBcAP_mb4qNmjjECz3nkNRu0l5ssp&s" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Hint 4</h5>
-        <p class="card-text">{{hint4}}</p>
-      </div>
+    <div class="card-stack" *ngIf="hint5Status">
+      <div class="card-item front" #refEl5 (click)="onFrontCardClick(refEl5)"></div>
+      <div class="card-item back" #refEl5 (click)="onBackCardClick(refEl5)">{{hint5}}</div>
     </div>
-    <div class="card" style="width: 400px;" *ngIf="hint5Status">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8QJmJQLtIDr4XBcAP_mb4qNmjjECz3nkNRu0l5ssp&s" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Hint 5</h5>
-        <p class="card-text">{{hint5}}</p>
-      </div>
-    </div>
+  </div>
 </div>
+<button id="addCardBtn" (click)="buyHint()">Buy Hint</button>
+</body>
