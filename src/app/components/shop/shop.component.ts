@@ -21,7 +21,7 @@ export class ShopComponent implements OnInit{
   hint4Status: boolean = false;
   hint5Status: boolean = false;
   isDisabled: boolean = false
-  hintPrice: number = 9999;
+  hintPrice: number = 3334;
   score: number = 0;
   buttonText: String = 'Buy: '+ this.hintPrice+ ' pts. ' 
 
